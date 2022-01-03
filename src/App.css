@@ -2,23 +2,41 @@
   box-sizing: border-box;
   margin: 0;
   font-size: 36px;
+  
+
 }
 main {
   width: 100vw;
   height: 100vh;
   justify-content: center;
   align-items: center;
+  background-color: #ee9b00;
+}
+.navbar {
+  background-color: #ee9b00;
+}
+.navbar ul {
+  list-style: none;
+}
+.navbar li {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 auto;
 }
 .Grocery {
   text-align: center;
   justify-content: center;
   display: flex;
+  background-color: #ee9b00;
 }
 .maincontainer {
   border-radius: 10px;
   background-color: #0a9396;
   padding: 20px;
   width: 50%;
+  box-shadow: 10px 10px 26px 0px rgba(0, 0, 0, 0.35);
 }
 .trackertitle {
   color:hsl(0, 0%, 100%)
@@ -130,4 +148,10 @@ button:hover {
 }
 .totalnum {
   margin-left: 10px;
+}
+
+.Recipe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

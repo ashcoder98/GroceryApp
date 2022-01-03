@@ -1,19 +1,21 @@
 import '../App.css';
 import {useState , useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle, faChevronRight, faChevronLeft, faCircle, faCheckCircle, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle, faChevronRight, faChevronLeft, faCircle, faCheckCircle, faShoppingCart, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 function Grocery() {
-
+// useState Code 
         const [items, setItems] = useState 
         ([
-          { itemName: "item 1", quantity: 1, isSelected: false },
-          { itemName: "item 2", quantity: 3, isSelected: true },
-          { itemName: "item 3", quantity: 2, isSelected: false },
+          { itemName: "bread", quantity: 1, isSelected: false },
+          { itemName: "milk", quantity: 3, isSelected: true },
+          { itemName: "oranges", quantity: 2, isSelected: false },
       ]);
       const [input, setInput] = useState("");
       
       const [totalCount, setTotalCount] = useState(0);
-
+// useEffect Code 
+// useEffect(() => {}, [])
+// Helper functions
       const handleAddClick = () => {
         const newItem = {
           itemName: input,
@@ -27,14 +29,24 @@ function Grocery() {
 
       const handleIncrease = (index) => {
         const newItems = [...items];
+        if (newItems[index].quantity < 10) {
           newItems[index].quantity++;
+        }
+        else if (newItems[index].quantity >= 10) {
+          newItems[index].quantity = 10
+        }
           setItems(newItems);
           addTotal();
    
       }
       const handleDecrease = (index) => {
         const newItems = [...items];
+        if (newItems[index].quantity > 0) {
           newItems[index].quantity--;
+        }
+        else if (newItems[index].quantity <= 0) {
+          newItems[index].quantity = 0
+        }
           setItems(newItems);
           addTotal();
       }
@@ -66,6 +78,7 @@ function Grocery() {
 								<>
 									<FontAwesomeIcon onClick={()=> toggle(index)} icon={faCheckCircle} />
 									<span className='completed'>{item.itemName}</span>
+                  <FontAwesomeIcon icon={faTimesCircle}></FontAwesomeIcon>
 								</>
 							) : (
 								<>
