@@ -12,18 +12,27 @@ main {
   align-items: center;
   background-color: #ee9b00;
 }
+header {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  /* margin: 0 auto; */
+}
 .navbar {
   background-color: #ee9b00;
+  width: 100%;
 }
-.navbar ul {
+.navbar ul a {
   list-style: none;
+  color: white;
+  margin: auto;
+  /* display: inline-block; */
+  /* width: 100%; */
 }
 .navbar li {
-  display: flex;
+  display: inline-block;
   padding: 10px 20px;
-  justify-content: space-around;
-  align-items: center;
-  margin: 0 auto;
+  margin: auto;
 }
 .Grocery {
   text-align: center;
