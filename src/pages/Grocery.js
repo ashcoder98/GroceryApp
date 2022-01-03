@@ -13,7 +13,14 @@ function Grocery() {
       const [input, setInput] = useState("");
 
       const handleAddClick = () => {
-        alert('you clicked the add button')
+        const newItem = {
+          itemName: input,
+          quantity: 1,
+          isSelected: false,
+        }
+        const newItems = [...items, newItem];
+        setItems(newItems);
+        setInput("");
       }
   return (
     <div className="Grocery">
