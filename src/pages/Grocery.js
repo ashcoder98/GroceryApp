@@ -11,6 +11,8 @@ function Grocery() {
           { itemName: "item 3", quantity: 2, isSelected: false },
       ]);
       const [input, setInput] = useState("");
+      
+      const [totalCount, setTotalCount] = useState(0);
 
       const handleAddClick = () => {
         const newItem = {
@@ -21,6 +23,31 @@ function Grocery() {
         const newItems = [...items, newItem];
         setItems(newItems);
         setInput("");
+      }
+
+      const handleIncrease = (index) => {
+        const newItems = [...items];
+          newItems[index].quantity++;
+          setItems(newItems);
+          addTotal();
+   
+      }
+      const handleDecrease = (index) => {
+        const newItems = [...items];
+          newItems[index].quantity--;
+          setItems(newItems);
+          addTotal();
+      }
+      const toggle = (index) => {
+        const newItems = [...items];
+        newItems[index].isSelected = !newItems[index].isSelected;
+        setItems(newItems)
+      }
+      const addTotal = () => {
+        const totalCount = items.reduce((total, item)=>{
+          return total + item.quantity
+        }, 0);
+        setTotalCount(totalCount)
       }
   return (
     <div className="Grocery">
@@ -37,30 +64,30 @@ function Grocery() {
 						<div className='item-name'>
 							{item.isSelected ? (
 								<>
-									<FontAwesomeIcon icon={faCheckCircle} />
+									<FontAwesomeIcon onClick={()=> toggle(index)} icon={faCheckCircle} />
 									<span className='completed'>{item.itemName}</span>
 								</>
 							) : (
 								<>
-									<FontAwesomeIcon icon={faCircle} />
+									<FontAwesomeIcon onClick={()=> toggle(index)} icon={faCircle} />
 									<span>{item.itemName}</span>
 								</>
 							)}
 						</div>
 						<div className='quantity'>
 							<button>
-								<FontAwesomeIcon icon={faChevronLeft} />
+								<FontAwesomeIcon icon={faChevronLeft} onClick={()=> handleDecrease(index)} />
 							</button>
-							<span> 1 </span>
-							<button>
-								<FontAwesomeIcon icon={faChevronRight} />
+							<span> {item.quantity} </span>
+							<button >
+								<FontAwesomeIcon icon={faChevronRight} onClick={()=> handleIncrease(index)} />
 							</button>
 						</div>
 					</div>)}
 
 				<div className='total'>
         <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
-          <span className='totalnum'>Total: 6</span>
+          <span className='totalnum'>Total: {totalCount}</span>
         </div>
 				</div>
 
