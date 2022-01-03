@@ -10,17 +10,20 @@ function Grocery() {
           { itemName: "item 2", quantity: 3, isSelected: true },
           { itemName: "item 3", quantity: 2, isSelected: false },
       ]);
+      const [input, setInput] = useState("");
 
-
-
-
+      const handleAddClick = () => {
+        alert('you clicked the add button')
+      }
   return (
     <div className="Grocery">
       <div className='maincontainer'>
       <h1 className='trackertitle'>Grocery Tracker</h1>
       <div className='add-item-box'>
-        <input className='add-item-input' placeholder='Add new item...' />
-      <FontAwesomeIcon icon={faPlusCircle} ></FontAwesomeIcon>
+        <input value={input} onChange={(event)=> setInput(event.target.value)} className='add-item-input' placeholder='Add new item...' />
+        <button >
+      <FontAwesomeIcon icon={faPlusCircle} onClick={()=> handleAddClick()} ></FontAwesomeIcon>
+        </button>
         </div>
         <div className='item-list'>
           {items.map((item, index)=>					<div className='item-container'>
