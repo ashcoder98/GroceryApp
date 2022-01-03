@@ -1,6 +1,6 @@
 import '../App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle, faChevronRight, faChevronLeft, faCircle, faCheckCircle, faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 function Grocery() {
   return (
     <div className="Grocery">
@@ -10,6 +10,39 @@ function Grocery() {
         <input className='add-item-input' placeholder='Add new item...' />
       <FontAwesomeIcon icon={faPlusCircle} ></FontAwesomeIcon>
         </div>
+        <div className='item-list'>
+					<div className='item-container'>
+						<div className='item-name'>
+							{false ? (
+								<>
+									<FontAwesomeIcon icon={faCheckCircle} />
+									<span className='completed'>Item 1</span>
+								</>
+							) : (
+								<>
+									<FontAwesomeIcon icon={faCircle} />
+									<span>Item 1</span>
+								</>
+							)}
+						</div>
+						<div className='quantity'>
+							<button>
+								<FontAwesomeIcon icon={faChevronLeft} />
+							</button>
+							<span> 1 </span>
+							<button>
+								<FontAwesomeIcon icon={faChevronRight} />
+							</button>
+						</div>
+					</div>
+				</div>
+				<div className='total'>
+        <FontAwesomeIcon icon={faShoppingCart}></FontAwesomeIcon>
+          Total: 6
+        </div>
+
+
+
       </div>
     </div>
   );
