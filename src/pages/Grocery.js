@@ -7,12 +7,12 @@ function Grocery() {
         const [items, setItems] = useState 
         ([
           { itemName: "bread", quantity: 1, isSelected: false },
-          { itemName: "milk", quantity: 3, isSelected: true },
-          { itemName: "oranges", quantity: 2, isSelected: false },
+          { itemName: "milk", quantity: 1, isSelected: true },
+          { itemName: "oranges", quantity: 1, isSelected: false },
       ]);
       const [input, setInput] = useState("");
       
-      const [totalCount, setTotalCount] = useState(0);
+      const [totalCount, setTotalCount] = useState(3);
 // useEffect Code 
 // useEffect(() => {}, [])
 // Helper functions
@@ -23,7 +23,7 @@ function Grocery() {
           isSelected: false,
         }
         const newItems = [...items, newItem];
-        setItems(newItems);
+        localStorage.setItems(newItems);
         setInput("");
       }
 
@@ -61,6 +61,14 @@ function Grocery() {
         }, 0);
         setTotalCount(totalCount)
       }
+      const deleteOne = (index) => {
+          const newItems = [...items];
+          newItems.splice(newItems[index], 1)
+          setItems(newItems);
+          addTotal();
+        }
+      // useEffect(()=>{   
+      // }, [items])
   return (
     <div className="Grocery">
       <div className='maincontainer'>
@@ -78,7 +86,7 @@ function Grocery() {
 								<>
 									<FontAwesomeIcon onClick={()=> toggle(index)} icon={faCheckCircle} />
 									<span className='completed'>{item.itemName}</span>
-                  <FontAwesomeIcon icon={faTimesCircle}></FontAwesomeIcon>
+                  <FontAwesomeIcon onClick={()=> deleteOne(index)} icon={faTimesCircle}></FontAwesomeIcon>
 								</>
 							) : (
 								<>
