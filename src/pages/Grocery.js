@@ -1,5 +1,5 @@
 import '../App.css';
-import {useState , useEffect } from 'react'
+import {useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlusCircle, faChevronRight, faChevronLeft, faCircle, faCheckCircle, faShoppingCart, faTimesCircle } from '@fortawesome/free-solid-svg-icons'
 function Grocery() {
@@ -7,7 +7,7 @@ function Grocery() {
         const [items, setItems] = useState 
         ([
           { itemName: "bread", quantity: 1, isSelected: false },
-          { itemName: "milk", quantity: 1, isSelected: true },
+          { itemName: "milk", quantity: 1, isSelected: false },
           { itemName: "oranges", quantity: 1, isSelected: false },
       ]);
       const [input, setInput] = useState("");
